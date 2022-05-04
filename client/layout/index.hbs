@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Quranok</title>
+
+    {{!-- Favicon --}}
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
+    {{!-- Metadata --}}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {{!-- Handlebars --}}
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js" type='text/javascript'></script>
+
+    {{!-- Icons --}}
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/3d3f81f5ae.js"></script>
+
+    {{!-- Styles --}}
+    <link href="../style/global.css" rel="stylesheet">
+    <link href="../style/quran.css" rel="stylesheet">
+    <link href="../style/mahawer.css" rel="stylesheet">
+    <link href="../style/navigation.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    {{!-- Quran navigator --}}
+    <nav class="quran-navigator">
+
+        {{!-- Nav options --}}
+        <ul class="quran-nav-options">
+
+            {{!-- Nav --}}
+            <li><a class="quran-navigation-option" href="/navigation" id="quran-nav-button">فهرس</a></li>
+
+            {{!-- Quran --}}
+            <li><a class="quran-navigation-option" href="/quran" id="quran-view-button">قرآن</a></li>
+
+        </ul>
+
+    </nav>
+
+    {{!-- Quran view --}}
+    <main class="quran-view" id="quran-view">
+        {{{body}}}
+    </main>
+
+    <script src="../js/index.js" type="module"></script>
+    <script src="../js/quran.js" type="module"></script>
+    <script src="../js/mahawer.js" type="module"></script>
+    <script src="../js/navigation.js" type="module"></script>
+</body>
+</html>

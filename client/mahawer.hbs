@@ -1,0 +1,71 @@
+<div class="all-mahawer-container">
+    <div class="mehwar-card" id="moqadema-card">
+        <div onclick="handleMahawerSectionRequest(this)" class="collapsed-mehwar-card">
+            <h3 class="collapsed-mehwar-counter" id="moqadema-counter">المقدمة</h3>
+            <p class="collapsed-mehwar-text" id="moqadema-title">
+                {{mahawer.moqadema.title}}
+                <p class="collapsed-mehwar-range" id="moqadema-range">{{mahawer.moqadema.range}}</p>
+            </p>
+        </div>
+        <article class="mehwar-aqsam">
+            {{#with mahawer}}
+                {{#each moqadema.sections as |section|}}
+                    <section class="qesm-section">
+                        <a  class="qesm-anchor" id="sub-axle-header" href="#"
+                            onclick="handleClickedMehwarSection({{../../ mahawer.surahID}} , {{section.startAya}})">
+                            <h4 class="qesm-header">القسم {{section.id}}</h4>
+                        </a>
+                        <p class="qesm-text">
+                            {{section.text}}
+                        <p class="qesm-range">
+                            [
+                            {{#eq section.startAya section.endAya}}
+                                {{section.startAya}}
+                            {{else}}
+                                {{section.startAya}} - {{section.endAya}}
+                            {{/eq}}
+                            ]
+                        </p>
+                        </p>
+                    </section>
+                {{/each}}
+            {{/with}}
+        </article>
+    </div>
+    {{#each mahawer.mahawer as |mehwar|}}
+        <div class="mehwar-card">
+            <div onclick="handleMahawerSectionRequest(this)" class="collapsed-mehwar-card">
+                <h3 class="collapsed-mehwar-counter" id="axle-initial-counter-mehawer">
+                    المحور  {{mehwar.counter}}
+                </h3>
+                <h2 class="collapsed-mehwar-title" id="axle-initial-title-mehawer"> {{mehwar.title}} </h2>
+                <p class="collapsed-mehwar-text" id="axle-initial-text">
+                    {{mehwar.text}}
+                    <p class="collapsed-mehwar-range" id="axle-initial-range-mehawer">{{mehwar.range}}</p>
+                </p>
+            </div>
+            <article class="mehwar-aqsam">
+                {{#each mehwar.sections as |section|}}
+                    <section class="qesm-section">
+                        <a  class="qesm-anchor" id="sub-axle-header" href="#"
+                            onclick="handleClickedMehwarSection({{../../ mahawer.surahID}} , {{section.startAya}})">
+                            <h4 class="qesm-header">القسم {{section.id}}</h4>
+                        </a>
+                        <p class="qesm-text">
+                            {{section.text}}
+                            <p class="qesm-range">
+                                [
+                                    {{#eq section.startAya section.endAya}}
+                                        {{section.startAya}}
+                                    {{else}}
+                                        {{section.startAya}} - {{section.endAya}}
+                                    {{/eq}}
+                                ]
+                            </p>
+                        </p>
+                    </section>
+                {{/each}}
+            </article>
+        </div>
+    {{/each}}
+</div>

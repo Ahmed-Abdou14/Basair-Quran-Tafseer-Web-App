@@ -1,0 +1,44 @@
+<div class="quran-navigation-container" id="quran-navigation-container">
+    <section class="page-search-form toggle-search-container">
+        <!--toggle-->
+        <label class="juz-sowar-toggle" id="juz-sowar-toggle" for="juz-sowar-toggle__input">
+            <input id="juz-sowar-toggle__input" class="juz-sowar-toggle__input" type="checkbox" checked onchange="handleNavToggle(this)">
+            <div class="toggle-fill"></div>
+        </label>
+
+        <!--Seach bar-->
+        <div class="page-search-bar">
+            <button type="submit" class="page-search-button" onclick="handlePageSearch()">
+                <i class="fas fa-search fa-xl page-search-icon" id="search-icon"></i>
+            </button>
+            <input id="page-search-number" type="number" min="1" max="604" name="search-name" class="page-search-bar-txt" placeholder="رقم الصفحة">
+        </div>
+    </section>
+
+    <!--juzs vertical slider-->
+    <main id="quran-nav-cards" class="sliding-cards-container">
+        {{#each juzs as |j|}}
+            <section class="card juz-card">
+                <section class="card-title">
+                    <h3 class="english-juz-number">{{j.name.english}}</h3>
+                    <h3 class="arabic-juz-number">{{j.name.arabic}}</h3>
+                </section>
+                <hr>
+                <section class="card-content">
+                    <ul class="hizb-list">
+                        <li id="{{j.index}}" onclick="handleClickedQuarterRequest({juz: {{j.index}}, hizb: 1, quarter: 4})">3/4</li>
+                        <li id="{{j.index}}" onclick="handleClickedQuarterRequest({juz: {{j.index}}, hizb: 1, quarter: 3})">1/2</li>
+                        <li id="{{j.index}}" onclick="handleClickedQuarterRequest({juz: {{j.index}}, hizb: 1, quarter: 2})">1/4</li>
+                        <li id="{{j.index}}" onclick="handleClickedQuarterRequest({juz: {{j.index}}, hizb: 1, quarter: 1})">الحزب الاول</li>
+                    </ul>
+                    <ul class="hizb-list">
+                        <li id="{{j.index}}" onclick="handleClickedQuarterRequest({juz: {{j.index}}, hizb: 2, quarter: 4})">3/4</li>
+                        <li id="{{j.index}}" onclick="handleClickedQuarterRequest({juz: {{j.index}}, hizb: 2, quarter: 3})">1/2</li>
+                        <li id="{{j.index}}" onclick="handleClickedQuarterRequest({juz: {{j.index}}, hizb: 2, quarter: 2})">1/4</li>
+                        <li id="{{j.index}}" onclick="handleClickedQuarterRequest({juz: {{j.index}}, hizb: 2, quarter: 1})">الحزب الثاني</li>
+                    </ul>
+                </section>
+            </section>
+        {{/each}}
+    </main>
+</div>

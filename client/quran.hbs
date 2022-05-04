@@ -1,0 +1,15 @@
+<header class="header-viewer">
+    <i class="fa-solid fa-arrow-left arrow-viewer" onclick="handleQuranokPageRequest({{add quranokPage.index 1}})"></i>
+    <h1 id="quran-page-index" class="head-title-viewer">
+        (صفحة {{quranokPage.index}})
+    </h1>
+    <i class="fa-solid fa-arrow-right arrow-viewer" onclick="handleQuranokPageRequest({{subtract quranokPage.index 1}})"></i>
+</header>
+<main class="main-viewer">
+    {{#each quranokPage.suwar as |surah|}}
+        {{{loadSurahTable surah}}}
+    {{/each}}
+</main>
+<script type="text/javascript">
+    window.location.href = `#{{quranokPage.suwar.[0].juz}}:جزء`
+</script>
