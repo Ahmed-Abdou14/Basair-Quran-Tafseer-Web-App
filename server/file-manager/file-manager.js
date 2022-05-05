@@ -31,8 +31,7 @@ async function loadModel (model, file) {
     }
 }
 
-/*
-export async function fixSurahsJson() {
+/*export async function fixSurahsJson() {
     const suwar = await fs.readJson(path.join(path.resolve(), `server/json/surahs.json`));
     const juzs = await fs.readJson(path.join(path.resolve(), `server/json/juzs.json`))
 

@@ -31,7 +31,7 @@ const quranokPageTemplate = `
 async function handleQuranokPageRequest(pageIndex) {
     const quranokPage = await quranRepo.getQuranokPageObjByIndex(pageIndex);
     document.querySelector('#quran-view').innerHTML = loadQuranokPage(quranokPage);
-    window.location.href = `#${quranokPage.suwar[0].juz}:جزء`
+    window.location.href = `#${quranokPage.juzArabicName}`
 }
 
 //HBS Compilers

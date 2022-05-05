@@ -17,8 +17,7 @@ class ViewService {
     async renderQuranPage(req, res) {
         const quranokPage = await quranRepo.getQuranokPageObjByIndex(req.cookies.pageIndex);
         res.render('quran', {
-            quranokPage,
-            idpath: '2'
+            quranokPage
         });
     }
 
@@ -35,7 +34,10 @@ class ViewService {
 
     async renderMahawerPage(req, res) {
         const mahawer = await quranRepo.getSurahMahawerById(req.query.surahId)?.lean();
-        if(!mahawer) res.status(404).send('Page Not Found')
+        if(!mahawer) {
+            const surah = await quranRepo.getQuranSurahById(req.query.surahId);
+            res.status(404).send(`Surah: ${surah.englishName} does not have mahawer yet`)
+        }
         res.render('mahawer', {
             mahawer
         });

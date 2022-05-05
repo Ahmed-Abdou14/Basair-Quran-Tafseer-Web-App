@@ -96,6 +96,7 @@ export default class QuranRepo {
                 }
             }
         ]);
+        p.juzArabicName = (await this.getQuranJuzsBySurahAyaId(suwar[0].id, suwar[0].verses[0].id)).name.arabic?.replaceAll(' ', '-');
         p.suwar = suwar;
         return p
     }
@@ -185,7 +186,9 @@ export default class QuranRepo {
         if (embedJuz == 'true') return this.getQuranSuwarWithJuzEmbedded();
         return surah.find();
     }
-
+    getQuranSurahById(id) {
+        return surah.findOne({id});
+    }
     getQuranSuwarWithJuzEmbedded() {
         return surah.aggregate([
             {
@@ -204,7 +207,19 @@ export default class QuranRepo {
     getQuranJuzs() {
         return juz.find();
     }
-
+    getQuranJuzsBySurahAyaId(surahId, aya){
+        return juz.aggregate([
+            {
+                '$match': {
+                    '$or': [
+                        {'sura': {'$lt': surahId}},
+                        {'sura': surahId,'aya': {'$lte': aya}}
+                    ]
+                }
+            },
+            {'$sort': {'index': 1}}
+        ]).then(agg => agg.pop());
+    }
     getQuranJuzById(index) {
         return juz.findOne({index});
     }
