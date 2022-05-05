@@ -1,3 +1,7 @@
+//Command Line libraries
+import ora from 'ora';
+const spinner = ora({spinner: 'dots'});
+
 //Libraries
 import express from 'express';
 import mongoose from "mongoose";
@@ -49,9 +53,10 @@ const options = {
 }
 
 mongoose.connect(uri, options, async () => {
-    console.log(`database connection established`);
+    await spinner.start(`Migrating Db`)
     await loadModels()
+    await spinner.succeed(`Database connection established`);
     app.listen(port, () => {
-        console.log(`Server started @http://localhost:${port}`)
+        spinner.succeed(`Server started @http://localhost:${port}`);
     });
 });

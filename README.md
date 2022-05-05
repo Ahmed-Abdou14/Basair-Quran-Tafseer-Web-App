@@ -1,1 +1,1 @@
-Basair: Quran with Tafseer Web App
+CMPS 312 Project Phase 1
