@@ -36,21 +36,31 @@ export default class QuranRepo {
     }
 
     getQuranPageBySurahAyaId(surahID, aya) {
-        return page.aggregate([{
-            '$match': {
-                '$or': [
-                    {
-                        'startingSura': {'$eq': surahID}, 'endingSura': {'$eq': surahID},
-                        'startingAya': {'$lte': aya},
-                        'endingAya': {'$gte': aya}
-                    },
-                    {
-                        'endingSura': [{'$gte': surahID}, {'$ne': '$startingSura'}],
-                        'startingSura': {'$lte': surahID}
-                    }
-                ]
+        return page.aggregate([
+            {
+                $match: {
+                    $or: [
+                        {
+                            'startingSura': {$eq: surahID}, 'endingSura': {$eq: surahID},
+                            'startingAya': {$lte: aya},
+                            'endingAya': {$gte: aya}
+                        },
+                        {
+                            $and:[
+                                {'startingSura': {$lte: surahID}, 'endingSura': {$gte: surahID}},
+                                {$expr: {$ne: ['$startingSura', '$endingSura']}},
+                                {
+                                    $or: [
+                                        {'startingSura': surahID, 'startingAya': {$lte: aya}},
+                                        {'endingSura': surahID, 'endingAya': {$gte: aya}}
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
             }
-        }]).then(agg => agg[0]);
+        ]).then(agg => agg[0]);
     }
 
     async getQuranPageWithSuwarAyaatByIndex(pageIndex) {

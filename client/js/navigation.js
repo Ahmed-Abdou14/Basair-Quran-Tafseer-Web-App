@@ -101,6 +101,7 @@ async function handleSurahRequest(id) {
 async function handleClickedQuarterRequest(customJuz) {
     const quarterIndex = 8 * customJuz.juz + 4 * customJuz['hizb'] + customJuz['quarter'] - 12;
     const quarterObj = await quranRepo.getQuranQuarterByIndex(quarterIndex);
+    console.log(JSON.stringify(quarterObj))
     const page = await quranRepo.getQuranPageBySurahAyaId(quarterObj.sura, quarterObj.aya);
     window.location.pathname = `/${page.index}`
 }
