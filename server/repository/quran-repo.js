@@ -217,6 +217,9 @@ export default class QuranRepo {
     getQuranJuzs() {
         return juz.find();
     }
+    getQuranJuzById(index) {
+        return juz.findOne({index});
+    }
     getQuranJuzsBySurahAyaId(surahId, aya){
         return juz.aggregate([
             {
@@ -229,8 +232,5 @@ export default class QuranRepo {
             },
             {'$sort': {'index': 1}}
         ]).then(agg => agg.pop());
-    }
-    getQuranJuzById(index) {
-        return juz.findOne({index});
     }
 }

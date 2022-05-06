@@ -43,5 +43,5 @@ function ayaatXTafsirRowTemplate(ayaat, tafsir) {
     `;
 }
 function ayaXVerseIdTemplate(verseObj) {
-    return `${verseObj.text}(${verseObj.id})`;
+    return `${verseObj.text}(${verseObj.id.toLocaleString('ar-sa')})`;
 }

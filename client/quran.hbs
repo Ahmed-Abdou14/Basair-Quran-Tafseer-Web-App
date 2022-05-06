@@ -1,7 +1,7 @@
 <header class="header-viewer">
     <i class="fa-solid fa-arrow-left arrow-viewer" onclick="handleQuranokPageRequest({{add quranokPage.index 1}})"></i>
     <h1 id="quran-page-index" class="head-title-viewer">
-        (صفحة {{quranokPage.index}})
+        (صفحة {{toArabicNumeral quranokPage.index}})
     </h1>
     <i class="fa-solid fa-arrow-right arrow-viewer" onclick="handleQuranokPageRequest({{subtract quranokPage.index 1}})"></i>
 </header>

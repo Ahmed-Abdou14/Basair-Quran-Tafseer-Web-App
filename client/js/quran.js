@@ -6,6 +6,9 @@ const quranRepo = new QuranRepo();
 import {add, subtract} from "./hbs-register-helper/logical-register-helpers.js";
 import {loadSurahTable} from "./hbs-register-helper/templates-register-helpers.js";
 
+//Custom Methods
+
+
 //OnLoad
 document.addEventListener("DOMContentLoaded", () => {
     window.handleQuranokPageRequest = handleQuranokPageRequest;
@@ -16,7 +19,7 @@ const quranokPageTemplate = `
         <header class="header-viewer">
             <i class="fa-solid fa-arrow-left arrow-viewer" onclick="handleQuranokPageRequest({{add quranokPage.index 1}})"></i>
             <h1 id="quran-page-index" class="head-title-viewer">
-                (صفحة {{quranokPage.index}})
+                (صفحة {{toArabicNumeral quranokPage.index}})
             </h1>
             <i class="fa-solid fa-arrow-right arrow-viewer" onclick="handleQuranokPageRequest({{subtract quranokPage.index 1}})"></i>
         </header>
@@ -41,7 +44,8 @@ function loadQuranokPage(quranokPage){
         helpers: {
             loadSurahTable,
             add,
-            subtract
+            subtract,
+            toArabicNumeral: (n) => n.toLocaleString('ar-sa')
         }
     });
 }

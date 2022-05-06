@@ -14,7 +14,7 @@ import {loadSurahTable} from './client/js/hbs-register-helper/templates-register
 import {add, subtract, eq, areSameJuz} from './client/js/hbs-register-helper/logical-register-helpers.js';
 
 //File manager
-import {loadModels} from "./server/file-manager/file-manager.js";
+import {loadModels} from "./server/repository/db-migrator.js";
 
 //Router
 import apiRouter from './server/api-router.js';

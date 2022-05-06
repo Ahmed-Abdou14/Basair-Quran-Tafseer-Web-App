@@ -17,7 +17,8 @@ class ViewService {
     async renderQuranPage(req, res) {
         const quranokPage = await quranRepo.getQuranokPageObjByIndex(req.cookies.pageIndex);
         res.render('quran', {
-            quranokPage
+            quranokPage,
+            toArabicNumeral: (n) => n.toLocaleString('ar-sa')
         });
     }
 
