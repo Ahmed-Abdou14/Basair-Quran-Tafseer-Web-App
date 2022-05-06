@@ -40,7 +40,7 @@ app.enable('view cache');
 
 app.use(cookieParser())
 app.use(express.static('client'));
-app.use(morgan('dev'));
+app.use(morgan('combined'));
 app.use(express.json());
 
 app.use('/api', apiRouter);
