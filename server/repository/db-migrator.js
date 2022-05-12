@@ -11,8 +11,7 @@ import quarter from "../model/quarter.js";
 import fs from "fs-extra";
 import path from "path";
 
-export async function loadModels() {
-
+export async function initDB() {
     await Promise.all([
         loadModel(tafsir, 'tafsir.json'),
         loadModel(verse, 'verses.json'),

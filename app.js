@@ -14,7 +14,7 @@ import {loadSurahTable} from './client/js/hbs-register-helper/templates-register
 import {add, subtract, eq, areSameJuz} from './client/js/hbs-register-helper/logical-register-helpers.js';
 
 //File manager
-import {loadModels} from "./server/repository/db-migrator.js";
+import {initDB} from "./server/repository/db-migrator.js";
 
 //Router
 import apiRouter from './server/api-router.js';
@@ -54,7 +54,7 @@ const options = {
 
 mongoose.connect(uri, options, async () => {
     await spinner.start(`Migrating Db`)
-    await loadModels()
+    await initDB()
     await spinner.succeed(`Database connection established`);
     app.listen(port, () => {
         spinner.succeed(`Server started @http://localhost:${port}`);
