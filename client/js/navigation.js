@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.handleNavToggle = handleNavToggle;
     window.handleSurahRequest = handleSurahRequest;
     window.handleClickedQuarterRequest = handleClickedQuarterRequest;
-    window.handlePageSearch = handlePageSearch;
+    //window.handlePageSearch = handlePageSearch;
 });
 
 

@@ -11,7 +11,7 @@ quranNavBtn.addEventListener('click', handleAppNavChange);
 
 document.addEventListener("DOMContentLoaded", () => {
     window.handleAppNavChange = handleAppNavChange
-    window.updateIndexPageUI =updateIndexPageUI;
+    window.updateIndexPageUI = updateIndexPageUI;
     updateIndexPageUI();
 });
 
